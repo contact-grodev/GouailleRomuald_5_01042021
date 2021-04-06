@@ -1,0 +1,75 @@
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0; }
+
+/*!
+ * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+footer {
+	text-align: center;
+	padding: 1.5rem;
+	background-color: #F3E9F1; }
+
+#cart-svg {
+	padding-right: 0.5rem;
+	color: #8851ea;
+}
+
+#error {
+	text-align: center;
+	margin: 2rem; }
+#error__logo {
+		color: #8851ea;
+		font-size: 3rem; }
+#error__msg {
+		text-align: center;
+		font-size: 1.5rem; }
+
+.container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	background-color: #F3E9F1;
+	min-height: 100vh; }
+
+.topbar {
+	background-color: #F3E9F1;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: 0 2rem 2rem 2rem;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center; }
+
+.topbar__logo {
+	max-height: 5rem;
+	max-width: 12.5rem; }
+
+.topbar__nav {
+	font-size: 1.5rem;
+	 }
+
+.nav__link {
+	text-decoration: none;
+	color: black;
+	padding: 0 0.5rem;
+	max-width: 140px;
+	font-weight: bold; }
+
+.nav__link:hover, .nav__link:focus {
+	background: #BF7472cc; }
+
+
+
