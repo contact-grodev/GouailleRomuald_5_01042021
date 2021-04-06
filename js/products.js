@@ -6,7 +6,7 @@ const APIURL = "http://localhost:3000/api/" + produitSell + "/";
 
 //id du produit pour permettre un tri dans l'API
 
-let idProduit = "";
+var idProduit = "";
 
 /*Préparation des requis pour le script
 **********************************************/
@@ -19,23 +19,23 @@ if(localStorage.getItem("userPanier")){
 }else{
 	console.log("Administration : Le panier n'existe pas, il va être créer et l'envoyer dans le localStorage");
   	//Le panier est un tableau de produits
-  	let panierInit = [];
+  	var panierInit = [];
   	localStorage.setItem("userPanier", JSON.stringify(panierInit));
   };
 
   	//Tableau et objet demandé par l'API pour la commande
-  	let contact;
-  	let products = [];
+  	var contact;
+  	var products = [];
 
 	//L'user a maintenant un panier
-	let userPanier = JSON.parse(localStorage.getItem("userPanier"));
+	var userPanier = JSON.parse(localStorage.getItem("userPanier"));
 
 /*Appel de l'API
 **********************************************/
 
 getProduits = () =>{
 	return new Promise((resolve) =>{
-		let request = new XMLHttpRequest();
+		var request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
 			if(this.readyState == XMLHttpRequest.DONE && this.status == 200) 
 			{
@@ -66,10 +66,10 @@ getProduits = () =>{
 		const produits = await getProduits();
 
 		//Création de la section accueillant la liste des produits
-		let listProduct = document.createElement("section")
+		var listProduct = document.createElement("section")
 		listProduct.setAttribute("class", "list-product");
 		//Ajout de la section dans le HTML
-		let main = document.getElementById("main");
+		var main = document.getElementById("main");
 		main.appendChild(listProduct);
 
 		//Pour chaque produit de l'API on créé l'encadré HTML du produit
@@ -77,13 +77,13 @@ getProduits = () =>{
 		{ 
       	//création des élements de la structure de la liste des produits en vente
       	//Une div conteneur/2 div(block gauche et droit)/une image/le nom(titre)/le prix(p)/le lien(a)
-      	let produitBlock = document.createElement("div");
-      	let produitLeft = document.createElement("div");
-      	let produitRight = document.createElement("div");
-      	let produitImage = document.createElement("img");
-      	let produitNom = document.createElement("h2");
-      	let produitPrix = document.createElement("p");
-      	let produitLink = document.createElement("a");
+      	var produitBlock = document.createElement("div");
+      	var produitLeft = document.createElement("div");
+      	var produitRight = document.createElement("div");
+      	var produitImage = document.createElement("img");
+      	var produitNom = document.createElement("h2");
+      	var produitPrix = document.createElement("p");
+      	var produitLink = document.createElement("a");
 
       	//Ajout des attributs au balise pour la création du style via le css
       	produitBlock.setAttribute("class", "list-product__block");
@@ -121,7 +121,7 @@ async function detailProduit(){
     console.log("Administration : Vous regardez la page du produit id_"+produitSelected._id);
 
     //Faire apparaitre la fiche produit initialement en display none
-    let section = document.getElementById("section");
+    var section = document.getElementById("section");
     section.style.display = "block";
     
     //Remplissage de la fiche produit
@@ -135,19 +135,19 @@ async function detailProduit(){
     switch(produitSell){
     	case "cameras":
     	produitSelected.lenses.forEach((produit)=>{
-    		let optionProduit = document.createElement("option");
+    		var optionProduit = document.createElement("option");
     		document.getElementById("optionSelect").appendChild(optionProduit).innerHTML = produit;
     	});
     	break;
     	case "furniture":
     	produitSelected.varnish.forEach((produit)=>{
-    		let optionProduit = document.createElement("option");
+    		var optionProduit = document.createElement("option");
     		document.getElementById("optionSelect").appendChild(optionProduit).innerHTML = produit;
     	});
     	break;
     	case "teddies":
     	produitSelected.colors.forEach((produit)=>{
-    		let optionProduit = document.createElement("option");
+    		var optionProduit = document.createElement("option");
     		document.getElementById("optionSelect").appendChild(optionProduit).innerHTML = produit;
     	});
     	break;
@@ -160,7 +160,7 @@ async function detailProduit(){
  **********************************************/
  addPanier = () =>{
   	//Au clic de l'user pour mettre le produit dans le panier
-  	let inputBuy = document.getElementById("ajouterProduitPanier");
+  	var inputBuy = document.getElementById("ajouterProduitPanier");
   	inputBuy.addEventListener("click", async function() {
   		const produits = await getProduits();
   	//Récupération du panier dans le localStorage et ajout du produit dans le panier avant revoit dans le localStorage
@@ -181,17 +181,17 @@ addition = () =>{
       document.getElementById("panierVide").remove();
 
       //Création de la structure principale du tableau  
-      let facture = document.createElement("table");
-      let ligneTableau = document.createElement("tr");
-      let colonneNom = document.createElement("th");
-      let colonnePrixUnitaire = document.createElement("th");
-      let colonneRemove = document.createElement("th");
-      let ligneTotal = document.createElement("tr");
-      let colonneRefTotal = document.createElement("th");
-      let colonnePrixPaye = document.createElement("td");
+      var facture = document.createElement("table");
+      var ligneTableau = document.createElement("tr");
+      var colonneNom = document.createElement("th");
+      var colonnePrixUnitaire = document.createElement("th");
+      var colonneRemove = document.createElement("th");
+      var ligneTotal = document.createElement("tr");
+      var colonneRefTotal = document.createElement("th");
+      var colonnePrixPaye = document.createElement("td");
 
       //Placement de la structure dans la page et du contenu des entetes
-      let factureSection = document.getElementById("basket-resume");
+      var factureSection = document.getElementById("basket-resume");
       factureSection.appendChild(facture);
       facture.appendChild(ligneTableau);
       ligneTableau.appendChild(colonneNom);
@@ -205,14 +205,14 @@ addition = () =>{
       //Pour chaque produit du panier, on créé une ligne avec le nom, le prix
       
       //Init de l'incrémentation de l'id des lignes pour chaque produit
-      let i = 0;
+      var i = 0;
       
       JSON.parse(localStorage.getItem("userPanier")).forEach((produit)=>{
         //Création de la ligne
-        let ligneProduit = document.createElement("tr");
-        let nomProduit = document.createElement("td");
-        let prixUnitProduit = document.createElement("td");
-        let removeProduit = document.createElement("i");
+        var ligneProduit = document.createElement("tr");
+        var nomProduit = document.createElement("td");
+        var prixUnitProduit = document.createElement("td");
+        var removeProduit = document.createElement("i");
 
         //Attribution des class pour le css
         ligneProduit.setAttribute("id", "produit"+i);
@@ -243,7 +243,7 @@ addition = () =>{
       colonnePrixPaye.setAttribute("id", "sommeTotal")
 
       //Calcule de l'addition total
-      let totalPaye = 0;
+      var totalPaye = 0;
       JSON.parse(localStorage.getItem("userPanier")).forEach((produit)=>{
       	totalPaye += produit.price / 100;
       });
@@ -276,21 +276,21 @@ addition = () =>{
   //vérifie les inputs du formulaire
   checkInput = () =>{
     //Controle Regex
-    let checkString = /[a-zA-Z]/;
-    let checkNumber = /[0-9]/;
+    var checkString = /[a-zA-Z]/;
+    var checkNumber = /[0-9]/;
     //Source pour vérification email => emailregex.com
-    let checkMail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/y;
-    let checkSpecialCharacter = /[§!@#$%^&*(),.?":{}|<>]/;
+    var checkMail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/y;
+    var checkSpecialCharacter = /[§!@#$%^&*(),.?":{}|<>]/;
 
     //message fin de controle
-    let checkMessage = "";
+    var checkMessage = "";
 
     //Récupération des inputs
-    let formNom = document.getElementById("formNom").value;
-    let formPrenom = document.getElementById("formPrenom").value;
-    let formMail = document.getElementById("formMail").value;
-    let formAdresse = document.getElementById("formAdresse").value;
-    let formVille = document.getElementById("formVille").value;
+    var formNom = document.getElementById("formNom").value;
+    var formPrenom = document.getElementById("formPrenom").value;
+    var formMail = document.getElementById("formMail").value;
+    var formAdresse = document.getElementById("formAdresse").value;
+    var formVille = document.getElementById("formVille").value;
 
 
       //tests des différents input du formulaire
@@ -344,7 +344,7 @@ addition = () =>{
   //Vérification du panier
   checkPanier = () =>{
   //Vérifier qu'il y ai au moins un produit dans le panier
-  let etatPanier = JSON.parse(localStorage.getItem("userPanier"));
+  var etatPanier = JSON.parse(localStorage.getItem("userPanier"));
   //Si le panier est vide ou null (suppression localStorage par)=>alerte
   if(etatPanier == null){
 	//Si l'utilisateur à supprimer son localStorage etatPanier sur la page basket.html et qu'il continue le process de commande
@@ -371,7 +371,7 @@ addition = () =>{
   //Fonction requet post de l'API
   envoiDonnees = (objetRequest) => {
   	return new Promise((resolve)=>{
-  		let request = new XMLHttpRequest();
+  		var request = new XMLHttpRequest();
   		request.onreadystatechange = function() {
   			if(this.readyState == XMLHttpRequest.DONE && this.status == 201) 
   			{
@@ -394,19 +394,19 @@ addition = () =>{
   //Au click sur le btn de validation du formulaire
   validForm = () =>{
     //Ecoute de l'event click du formulaire
-    let btnForm = document.getElementById("envoiPost");
+    var btnForm = document.getElementById("envoiPost");
     btnForm.addEventListener("click", function(){
       //Lancement des verifications du panier et du form => si Ok envoi
       if(checkPanier() == true && checkInput() != null){
       	console.log("Administration : L'envoi peut etre fait");
       //Création de l'objet à envoyer
-      let objet = {
+      var objet = {
       	contact,
       	products
       };
       console.log("Administration : " + objet);
      //Conversion en JSON
-     let objetRequest = JSON.stringify(objet);
+     var objetRequest = JSON.stringify(objet);
      console.log("Administration : " + objetRequest);
      //Envoi de l'objet via la function
      envoiDonnees(objetRequest);
@@ -426,7 +426,7 @@ addition = () =>{
 resultOrder = () =>{
 	if(sessionStorage.getItem("order") != null){
     //Parse du session storage
-    let order = JSON.parse(sessionStorage.getItem("order"));
+    var order = JSON.parse(sessionStorage.getItem("order"));
     //Implatation de prénom et de id de commande dans le html sur la page de confirmation
     document.getElementById("lastName").innerHTML = order.contact.lastName
     document.getElementById("orderId").innerHTML = order.orderId
