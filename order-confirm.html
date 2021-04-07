@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Merci de la part ORINOCO</title>
+	<meta name="description" content="ORINOCO est un site de vente en ligne d'ours en peluche, de meubles en bois d'est de caméras anciennes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
+	<link rel="shortcut icon" type="image/png" href="img/orinoco-icon.png">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://kit.fontawesome.com/54c1824395.js" crossorigin="anonymous"></script>
+</head>
+<body class="order-confirm">
+	<header class="order-confirm__topbar">
+		<h1>
+			<img class="order-confirm__topbar__logo" src="img/orinoco-logo.jpg" alt="Logo d'Orinoco">
+		</h1>
+	</header>
+	<section class="order-confirm__card">
+		<div class="order-confirm__card__resume">
+			<i class="fas fa-check"></i>
+			<h2 class="order-confirm__card__resume__congrat">Merci pour votre achat <span id="lastName"></span> !</h2>
+			<div class="order-confirm__card__resume__info">
+				<p>Numéro de commande : <span id="orderId"></span></p>
+			</div>
+		</div>
+		<nav class="order-confirm__card__nav">
+			<p>Pour revenir à l'accueil de notre boutique cliquez sur ce lien <a href="index.html">Accueil</a></p>
+		</nav>
+	</section>
+	<footer>
+		<p>Site réalisé dans le cadre du projet 5 du parcours de <a href="https://openclassrooms.com/fr/paths/185-developpeur-web"> développeur web</a> d'<a href="https://openclassrooms.com/">Openclassrooms</a>, codé par Romuald Gouaille.</p>
+	</footer>
+	<script src="js/products.js"></script>
+	<script>resultOrder()</script>
+</body>
+</html>

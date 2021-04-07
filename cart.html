@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Votre panier ORINOCO</title>
+	<meta name="description" content="ORINOCO est un site de vente en ligne d'ours en peluche, de meubles en bois d'est de caméras anciennes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
+	<link rel="shortcut icon" type="image/png" href="img/orinoco-icon.png">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://kit.fontawesome.com/54c1824395.js" crossorigin="anonymous"></script>
+</head>
+<body class="container">
+	<header class="topbar">
+		<h1>
+			<img class="topbar__logo" src="img/orinoco-logo.jpg" alt="Logo d'Orinoco">
+		</h1>
+		<nav class="nav topbar__nav">
+			<a href="index.html" class="nav__link">Accueil</a>
+			<a href="cart.html" class="nav__link"><i id="cart-svg" class="fas fa-shopping-cart"></i>Panier</a>
+		</nav>
+	</header>
+	<main class="cart flex-block">
+		<div id="cart-resume">
+			<p id="panierVide">Votre panier est vide</p>
+		</div>
+		<div class="form">
+			<form method="post" name="form-panier">
+				<fieldset>
+					<legend>Civilité</legend>
+					<div class="form__group">
+						<div class="form__group">
+							<label for="formNom">Nom : </label>
+							<input type="text" id="formNom" class="form-control input-control" required name="formNom">
+						</div>
+						<div class="form__group">
+							<label for="formPrenom" class="right-inline">Prénom :</label>
+							<input type="text" id="formPrenom" class="form-control input-control" required name="formPrenom">
+						</div>
+					</div>
+				</fieldset> 
+				<fieldset>
+					<legend>Coordonnées</legend>
+					<div class="form__group">
+						<label for="formMail">E-mail :</label>
+						<input type="email" id="formMail" class="form-control input-control" required name="formMail">
+					</div>
+					<div class="form__group">
+						<label for="formAdresse">Adresse :</label>
+						<input type="text" id="formAdresse" class="form-control input-control" required name="formAdresse">
+					</div>
+					<div class="form__group">
+						<label for="formVille">Ville :</label>
+						<input type="text" id="formVille" class="form-control input-control" required name="formVille">
+					</div>
+				</fieldset> 
+				<input type="button" value="Je valide mon panier et mes informations" class="btn btn--form" id="envoiPost">
+			</form>
+		</div>
+	</main>
+	<footer class="bottom-fixed">
+		<p>Site réalisé dans le cadre du projet 5 du parcours de <a href="https://openclassrooms.com/fr/paths/185-developpeur-web"> développeur web</a> d'<a href="https://openclassrooms.com/">Openclassrooms</a>, codé par Romuald Gouaille.</p>
+	</footer>
+	<script src="js/products.js"></script>
+	<script>
+		addition();
+		validForm()
+	</script>
+</body>
+</html>
